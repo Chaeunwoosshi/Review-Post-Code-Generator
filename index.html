@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <style>
+body{
+  background-color: #1b2845;
+background-image: linear-gradient(315deg, #1b2845 0%, #274060 74%);
+color:#fff;
+padding:10px;
+}
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  padding:15px 20px;
+  text-align:center;
+  background:#475c77;
+  z-index:99;
+  font-size:20px;
+  font-weight:bold;
+}
+
+h3{
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+  margin:30px 0 40px 0;
+}
+
+ input, textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background:
+rgba( 255, 255, 255, 0.15 );
+box-shadow:
+0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter:
+blur( 2px );
+-webkit-backdrop-filter:
+blur( 2px );
+border-radius:
+10px;
+border:
+1px solid rgba( 255, 255, 255, 0.18 );
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+  color:#fff;  
+}
+input{
+  margin-bottom:25px;
+}
+textarea{
+  height:100px;
+  overflow-y:auto;
+  
+}
+input::placeholder, textarea::placeholder {
+    color:#8fa1bda8; /* Placeholder text color */
+    
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border: 1px solid #228B22; /* Highlight border on focus */
+    background: rgba(47,47,47,0.451); /* Slightly brighter background on focus */
+}
+
+/* Styling for the Button */
+button {
+    background-color: #228B22; 
+    color: white; /* White text */
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+     text-align:center;
+     margin:0 auto;
+     width:100%;
+  
+}
+
+button:hover {
+    background-color: #45a049; /* Slightly darker green */
+    transform: scale(1); /* Slight enlargement on hover */
+}
+
+button:active {
+    background-color: #3e8e41; /* Even darker green when clicked */
+    transform: scale(0.98); /* Slight reduction on click */
+}
+
+/* Add styles for the copy button (optional) */
+#copy-button {
+    margin: 10px auto;
+    display: block;
+    text-align: center;
+}
+
+        pre {
+            background:
+rgba( 255, 255, 255, 0.15 );
+box-shadow:
+0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter:
+blur( 2px );
+-webkit-backdrop-filter:
+blur( 2px );
+border-radius:
+10px;
+border:
+1px solid rgba( 255, 255, 255, 0.18 );
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+  color:#fff;  
+            padding: 10px;
+            overflow-x: auto;
+            height:200px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            
+  
+        }
+        .dynamic-input-container {
+            margin: 10px 0;
+        }
+
+.dynamic-input {
+    display: flex; /* Use Flexbox for inline layout */
+    align-items: center; /* Vertically center elements */
+}
+
+.screenshot-input {
+  width:200%;
+    flex-grow: 1; /* Make the input take the remaining space */
+    padding: 14px 10px;
+    margin-bottom:7px;
+}
+
+.dynamic-input button {
+    margin-left: 10px; /* Space between the input and the button */
+    
+    background-color: #228B22;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dynamic-input button:hover {
+    background-color: #1e7a1e;
+}
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <header>Post Code Generator</header>
+
+<br><br>
+<h3>Film Description</h3>
+    <!-- Other Inputs -->
+    
+  <label for="title">Enter Title:</label>
+    <input type="text" id="title" placeholder="Enter Title of the Drama/Movie/Series">
+    
+    <label for="thumbnail-url">Enter Thumbnail Image URL:</label>
+    <input type="text" id="thumbnail-url" placeholder=" Get in Blogger">
+    
+   <label for="synopsis">Enter Short Synopsis:</label>
+    <textarea id="synopsis" placeholder="Enter Short Synopsis here"></textarea>
+
+    <label for="hiddensynopsis">Enter Hidden Synopsis:</label>
+    <textarea id="hiddensynopsis" placeholder="Enter the rest of the synopsis"></textarea>
+
+    <label for="available">Enter Available On:</label>
+    <input type="text" id="available" placeholder="Where is it available?">
+
+    <label for="genre">Enter Genre:</label>
+    <input type="text" id="genre" placeholder="Enter the genre here">
+
+    <label for="episodes">Enter Total Episodes:</label>
+    <input type="number" id="episodes" placeholder="Enter the total episodes">
+    
+    <label for="imdbrating">Enter Rating:</label>
+    <input type="text" id="imdbrating" placeholder="Search in Imdb/Mydramalist">
+
+    <label for="dramalink">Enter Drama Link:</label>
+    <input type="text" id="dramalink" placeholder="Get in their website">
+
+    <label for="iframe-url">Enter Yt Link URL:</label>
+    <input type="text" id="iframe-url" placeholder="Get in Youtube">
+
+
+
+<h3>My Review</h3>
+    <label for="date">Enter Review Date:</label>
+    <input type="text" id="date" placeholder="Enter the review date here">
+
+    <label for="rating">Enter Your Rating:</label>
+    <input type="text" id="rating" placeholder="Enter your rating here">
+
+    <label for="blockquote">Enter Blockquote:</label>
+    <textarea id="blockquote" placeholder="Enter the blockquote here"></textarea>
+    <label for="review">Enter Review Text:</label>
+    <textarea id="review" placeholder="Enter the review text here"></textarea>
+
+    <!-- Add dynamic image inputs -->
+    <label for="screenshot">Enter Screenshot Image URLs:</label>
+    <div id="image-container" class="dynamic-input-container">
+        <div class="dynamic-input">
+            <input type="text" class="screenshot-input" placeholder="Enter the screenshot image URL here">
+       <button type="button" onclick="removeImageInput(this)">Remove</button>
+        </div>
+    </div>
+    <button type="button" onclick="addImageInput()">Add Image</button>
+<br><br>
+    <button onclick="generateIframe()">Generate Code</button>
+
+    <h3>Generated Post Code:</h3>
+    <pre id="generated-code"></pre>
+    <button id="copy-button" style="display: none;" onclick="copyCode()">Copy to Clipboard</button>
+
+    <script>
+        // Add a new dynamic input for screenshots
+        function addImageInput() {
+            const container = document.getElementById('image-container');
+            const div = document.createElement('div');
+            div.className = 'dynamic-input';
+            div.innerHTML = `
+                <input type="text" class="screenshot-input" placeholder="Enter the screenshot image URL here">
+                <button type="button" onclick="removeImageInput(this)">Remove</button>
+            `;
+            container.appendChild(div);
+        }
+
+        // Remove a dynamic input
+        function removeImageInput(button) {
+            const parent = button.parentElement;
+            parent.remove();
+        }
+
+        // Generate iframe code
+        function generateIframe() {
+            const urlInput = document.getElementById('iframe-url').value.trim();
+            const thumbInput = document.getElementById('thumbnail-url').value.trim();
+            const imdbratingInput = document.getElementById('imdbrating').value.trim();
+            const dramalinkInput = document.getElementById('dramalink').value.trim();
+            const titleInput = document.getElementById('title').value.trim();
+            const synopsisInput = document.getElementById('synopsis').value.trim();
+            const hiddensynopsisInput = document.getElementById('hiddensynopsis').value.trim();
+            const availableInput = document.getElementById('available').value.trim();
+            const genreInput = document.getElementById('genre').value.trim();
+            const episodesInput = document.getElementById('episodes').value.trim();
+            const dateInput = document.getElementById('date').value.trim();
+            const ratingInput = document.getElementById('rating').value.trim();
+            const blockquoteInput = document.getElementById('blockquote').value.trim();
+            const reviewInput = document.getElementById('review').value.trim();
+
+            // Collect all screenshot URLs
+            const screenshotInputs = document.querySelectorAll('.screenshot-input');
+            const screenshots = Array.from(screenshotInputs)
+                .map(input => input.value.trim())
+                .filter(url => url !== '');
+
+            const codeContainer = document.getElementById('generated-code');
+            const copyButton = document.getElementById('copy-button');
+
+            if (!urlInput || !thumbInput || !titleInput || !synopsisInput) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            // Generate the iframe code
+            let iframeCode = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+  <!-- Trailer Video -->
+  <div class="iframe-container">
+    <div class="play-button-overlay" onclick="playVideo()">
+      <div class="circle">
+        <div class="icon"></div>
+      </div>
+    </div>
+    <iframe 
+        id="video-iframe" 
+        src="${urlInput}" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="film-details"> 
+    <div class="film-thumbnail-container">
+      <div class="film-thumbnail">
+        <img src="${thumbInput}" alt="Film Thumbnail">
+      </div>
+      <a href="${dramalinkInput}" target="_blank" class="watch-now-btn"><i class="fa-solid fa-play"></i> Watch Now</a>
+    </div>
+
+    <div class="film-details-content">
+      <h1 class="film-title">${titleInput}</h1>
+      <p class="film-synopsis">
+        <strong>Synopsis:</strong> 
+        <span id="short-synopsis">${synopsisInput}</span>
+        <span id="full-synopsis" class="synopsis-hidden">${hiddensynopsisInput}</span>
+        <span id="toggle-button" class="synopsis-toggle" onclick="toggleSynopsis()">View</span>
+      </p>
+    </div>
+  </div>
+
+  <table style="border-radius: 10px; border-spacing: 0; width: 100%; text-align: left; border: 1px solid #ddd; margin: 10px auto; overflow: hidden;">
+  <thead>
+    <tr style="background-color: #228B22; color: white; text-align: center;">
+      <th style="color: white; padding: 5px; border-bottom: 1px solid #ddd;">Available On</th>
+      <th style="color: white; padding: 5px; border-bottom: 1px solid #ddd;">Genre</th>
+      <th style="color: white; padding: 5px; border-bottom: 1px solid #ddd;">Episodes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background:var(--soft-line)">
+      <td style="padding: 5px; text-align: center;">${availableInput}</td>
+      <td style="padding: 5px; text-align: center;">${genreInput}</td>
+      <td style="padding: 5px; text-align: center;">${episodesInput}</td>
+    </tr>
+  </tbody>
+</table>
+
+  <div class="review-card">
+    <h3><i class="fa-solid fa-star-half-stroke fa-beat"></i> User's Critic</h3>
+    <div class="review-header">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibAH7Wq9Zvnk3Xtu3B-9YGcQRDAw52hnem1YB4v0HboiSrKOqVmROBDAxpBRyJuBcvsUQ20irdkU8Ln-nDurCNqQ3-HPD5PRAtEAOMwzS94gxz0hxkOIWZhpuL2_ZE72I-sBZfN6565d3rdaIV_DD96WF8DxaGk6M8FGfJ27VhxkE/s220/4516604.png" alt="User Profile Picture">
+      <div>
+        <p class="rating-author">Master Oppa</p>
+        <p class="rating-date">${dateInput}</p>
+      </div>
+      <div class="rating">Rating: ${ratingInput}</div>
+    </div>
+    <div class="review-content">
+      <blockquote>${blockquoteInput}</blockquote>
+      <p>${reviewInput}</p>
+      
+    <div class="screenshots">
+        <h3>Screenshots:</h3>
+        ${screenshots.map(url => `<img src="${url}" alt="Screenshot">`).join('\n        ')}
+    </div>
+     </div>
+  </div>
+</body>
+</html>`;
+
+            // Display the raw HTML code inside <pre> block as plain text
+            codeContainer.textContent = iframeCode;
+
+            // Show the copy button
+            copyButton.style.display = "block";
+        }
+
+        // Copy generated code to clipboard
+        function copyCode() {
+            const codeContainer = document.getElementById('generated-code');
+            const textToCopy = codeContainer.textContent;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert("Iframe code copied to clipboard!");
+            }).catch(err => {
+                alert("Failed to copy text: " + err);
+            });
+        }
+    </script>
+</body>
+</html>
