@@ -281,6 +281,7 @@ function generateIframe() {
   <div class="film-details"> 
     <div class="film-thumbnail-container">
 
+<div class="film-thumbnail">
 <div style="margin:-20px 0 -15px 0;display: flex; align-items: flex-start; clear: both;" class="separator">
     <a href="${thumbInput}" style="text-align: center;">
         <img src="${thumbInput}"/>
@@ -308,22 +309,29 @@ function generateIframe() {
     </div>
   </div>
 
-  <table style="border-radius: 10px; border-spacing: 0; border: 1px solid #ddd; margin: 10px auto; overflow: hidden; text-align: left; width: 100%;">
+<div class="table-container">
+  <table>
     <thead>
-      <tr style="color: white; text-align: center;">
-        <th style="border-bottom: 1px solid #ddd; color: white; padding: 5px; background:#36cd85">Available On</th>
-        <th style="background:#36cd85;border-bottom: 1px solid #ddd; color: white; padding: 5px;">Genre</th>
-        <th style="background:#36cd85;border-bottom: 1px solid #ddd; color: white; padding: 5px;">Episodes</th>
+      <tr>
+        <th>Available On</th>
+        <th>Genre</th>
+        <th>Episodes</th>
       </tr>
     </thead>
     <tbody>
-      <tr style="background: var(--soft-line);">
-        <td style="padding: 5px; text-align: center;">${availableInput}</td>
-        <td style="padding: 5px; text-align: center;">${genreInput}</td>
-        <td style="padding: 5px; text-align: center;">${episodesInput}</td>
+      <tr>
+        <td>${availableInput}</td>
+        <td>${genreInput}</td>
+        <td>${episodesInput}</td>
       </tr>
+      
+        
+    
     </tbody>
   </table>
+</div>
+
+ 
 
   <div class="container">
     ${informationInput}
