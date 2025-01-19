@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
     <style>
 body{
   background-color: #1b2845;
@@ -170,22 +169,20 @@ border:
 </head>
 <body>
     <header>Post Code Generator</header>
-
 <br><br>
-<h3>Film Description</h3>
-    <!-- Other Inputs -->
-    
-  <label for="title">Enter Title:</label>
-    <input type="text" id="title" placeholder="Enter Title of the Drama/Movie/Series">
-    
+    <h3>Film Description</h3>
+    <!-- Input fields -->
     <label for="thumbnail-url">Enter Thumbnail Image URL:</label>
-    <input type="text" id="thumbnail-url" placeholder=" Get in Blogger">
-    
-   <label for="synopsis">Enter Short Synopsis:</label>
+    <input type="text" id="thumbnail-url" placeholder="Enter Thumbnail URL here">
+
+    <label for="imdbrating">Enter IMDB Rating:</label>
+    <input type="text" id="imdbrating" placeholder="Enter IMDB Rating here">
+
+    <label for="synopsis">Enter Short Synopsis:</label>
     <textarea id="synopsis" placeholder="Enter Short Synopsis here"></textarea>
 
     <label for="hiddensynopsis">Enter Hidden Synopsis:</label>
-    <textarea id="hiddensynopsis" placeholder="Enter the rest of the synopsis"></textarea>
+    <textarea id="hiddensynopsis" placeholder="Enter Hidden Synopsis here"></textarea>
 
     <label for="available">Enter Available On:</label>
     <input type="text" id="available" placeholder="Where is it available?">
@@ -195,19 +192,11 @@ border:
 
     <label for="episodes">Enter Total Episodes:</label>
     <input type="number" id="episodes" placeholder="Enter the total episodes">
-    
-    <label for="imdbrating">Enter Rating:</label>
-    <input type="text" id="imdbrating" placeholder="Search in Imdb/Mydramalist">
 
-    <label for="dramalink">Enter Drama Link:</label>
-    <input type="text" id="dramalink" placeholder="Get in their website">
+    <label for="information">Enter Additional Information:</label>
+    <textarea id="information" placeholder="Any additional information here"></textarea>
 
-    <label for="iframe-url">Enter Yt Link URL:</label>
-    <input type="text" id="iframe-url" placeholder="Get in Youtube">
-
-
-
-<h3>My Review</h3>
+    <h3>My Review</h3>
     <label for="date">Enter Review Date:</label>
     <input type="text" id="date" placeholder="Enter the review date here">
 
@@ -216,6 +205,7 @@ border:
 
     <label for="blockquote">Enter Blockquote:</label>
     <textarea id="blockquote" placeholder="Enter the blockquote here"></textarea>
+
     <label for="review">Enter Review Text:</label>
     <textarea id="review" placeholder="Enter the review text here"></textarea>
 
@@ -224,11 +214,11 @@ border:
     <div id="image-container" class="dynamic-input-container">
         <div class="dynamic-input">
             <input type="text" class="screenshot-input" placeholder="Enter the screenshot image URL here">
-       <button type="button" onclick="removeImageInput(this)">Remove</button>
+            <button type="button" onclick="removeImageInput(this)">Remove</button>
         </div>
     </div>
     <button type="button" onclick="addImageInput()">Add Image</button>
-<br><br>
+    <br><br>
     <button onclick="generateIframe()">Generate Code</button>
 
     <h3>Generated Post Code:</h3>
@@ -254,127 +244,130 @@ border:
             parent.remove();
         }
 
-        // Generate iframe code
-        function generateIframe() {
-            const urlInput = document.getElementById('iframe-url').value.trim();
-            const thumbInput = document.getElementById('thumbnail-url').value.trim();
-            const imdbratingInput = document.getElementById('imdbrating').value.trim();
-            const dramalinkInput = document.getElementById('dramalink').value.trim();
-            const titleInput = document.getElementById('title').value.trim();
-            const synopsisInput = document.getElementById('synopsis').value.trim();
-            const hiddensynopsisInput = document.getElementById('hiddensynopsis').value.trim();
-            const availableInput = document.getElementById('available').value.trim();
-            const genreInput = document.getElementById('genre').value.trim();
-            const episodesInput = document.getElementById('episodes').value.trim();
-            const dateInput = document.getElementById('date').value.trim();
-            const ratingInput = document.getElementById('rating').value.trim();
-            const blockquoteInput = document.getElementById('blockquote').value.trim();
-            const reviewInput = document.getElementById('review').value.trim();
+function generateIframe() {
+    const thumbInput = document.getElementById('thumbnail-url').value.trim();
+    const imdbratingInput = document.getElementById('imdbrating').value.trim();
+    const synopsisInput = document.getElementById('synopsis').value.trim();
+    const hiddensynopsisInput = document.getElementById('hiddensynopsis').value.trim();
+    const availableInput = document.getElementById('available').value.trim();
+    const genreInput = document.getElementById('genre').value.trim();
+    const episodesInput = document.getElementById('episodes').value.trim();
+    const informationInput = document.getElementById('information').value.trim();
+    const dateInput = document.getElementById('date').value.trim();
+    const ratingInput = document.getElementById('rating').value.trim();
+    const blockquoteInput = document.getElementById('blockquote').value.trim();
+    const reviewInput = document.getElementById('review').value.trim();
 
-            // Collect all screenshot URLs
-            const screenshotInputs = document.querySelectorAll('.screenshot-input');
-            const screenshots = Array.from(screenshotInputs)
-                .map(input => input.value.trim())
-                .filter(url => url !== '');
+    // Collect all screenshot URLs
+    const screenshotInputs = document.querySelectorAll('.screenshot-input');
+    const screenshots = Array.from(screenshotInputs)
+        .map(input => input.value.trim())
+        .filter(url => url !== ''); // Filter out empty URLs
 
-            const codeContainer = document.getElementById('generated-code');
-            const copyButton = document.getElementById('copy-button');
+    const codeContainer = document.getElementById('generated-code');
+    const copyButton = document.getElementById('copy-button');
 
-            if (!urlInput || !thumbInput || !titleInput || !synopsisInput) {
-                alert("Please fill in all required fields.");
-                return;
-            }
+    if (!thumbInput || !synopsisInput || !imdbratingInput) {
+        alert("Please fill in all required fields.");
+        return;
+    }
 
-            // Generate the iframe code
-            let iframeCode = `<!DOCTYPE html>
+    // Start the iframe code
+    let iframeCode = `<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 <body>
-  <!-- Trailer Video -->
-  <div class="iframe-container">
-    <div class="play-button-overlay" onclick="playVideo()">
-      <div class="circle">
-        <div class="icon"></div>
-      </div>
-    </div>
-    <iframe 
-        id="video-iframe" 
-        src="${urlInput}" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-    </iframe>
-  </div>
-
   <div class="film-details"> 
     <div class="film-thumbnail-container">
       <div class="film-thumbnail">
-        <img src="${thumbInput}" alt="Film Thumbnail">
+        <img alt="Film Thumbnail" src="${thumbInput}" />
+        <div class="rating-circle">
+          <div class="rating-text">Rating: ${imdbratingInput}</div>
+        </div>
       </div>
-      <a href="${dramalinkInput}" target="_blank" class="watch-now-btn"><i class="fa-solid fa-play"></i> Watch Now</a>
+      
+      <a class="follow-now-btn" href="https://m.me/acohcayeng" target="_blank">
+        <i class="fa-brands fa-facebook"></i> Follow me
+      </a>
     </div>
 
     <div class="film-details-content">
-      <h1 class="film-title">${titleInput}</h1>
-      <p class="film-synopsis">
-        <strong>Synopsis:</strong> 
-        <span id="short-synopsis">${synopsisInput}</span>
-        <span id="full-synopsis" class="synopsis-hidden">${hiddensynopsisInput}</span>
-        <span id="toggle-button" class="synopsis-toggle" onclick="toggleSynopsis()">View</span>
+      <h1 class="film-title">Synopsis</h1>
+      <p>
+        ${synopsisInput}
+        <span id="dots">...</span>
+        <span id="more">${hiddensynopsisInput}</span>
       </p>
+      <button onclick="toggleSynopsis()" id="myBtn">Read more</button>
     </div>
   </div>
 
-  <table style="border-radius: 10px; border-spacing: 0; width: 100%; text-align: left; border: 1px solid #ddd; margin: 10px auto; overflow: hidden;">
-  <thead>
-    <tr style="background-color: #228B22; color: white; text-align: center;">
-      <th style="color: white; padding: 5px; border-bottom: 1px solid #ddd;">Available On</th>
-      <th style="color: white; padding: 5px; border-bottom: 1px solid #ddd;">Genre</th>
-      <th style="color: white; padding: 5px; border-bottom: 1px solid #ddd;">Episodes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background:var(--soft-line)">
-      <td style="padding: 5px; text-align: center;">${availableInput}</td>
-      <td style="padding: 5px; text-align: center;">${genreInput}</td>
-      <td style="padding: 5px; text-align: center;">${episodesInput}</td>
-    </tr>
-  </tbody>
-</table>
+  <table style="border-radius: 10px; border-spacing: 0; border: 1px solid #ddd; margin: 10px auto; overflow: hidden; text-align: left; width: 100%;">
+    <thead>
+      <tr style="color: white; text-align: center;">
+        <th style="border-bottom: 1px solid #ddd; color: white; padding: 5px; background:#36cd85">Available On</th>
+        <th style="background:#36cd85;border-bottom: 1px solid #ddd; color: white; padding: 5px;">Genre</th>
+        <th style="background:#36cd85;border-bottom: 1px solid #ddd; color: white; padding: 5px;">Episodes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background: var(--soft-line);">
+        <td style="padding: 5px; text-align: center;">${availableInput}</td>
+        <td style="padding: 5px; text-align: center;">${genreInput}</td>
+        <td style="padding: 5px; text-align: center;">${episodesInput}</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div class="review-card">
-    <h3><i class="fa-solid fa-star-half-stroke fa-beat"></i> User's Critic</h3>
-    <div class="review-header">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibAH7Wq9Zvnk3Xtu3B-9YGcQRDAw52hnem1YB4v0HboiSrKOqVmROBDAxpBRyJuBcvsUQ20irdkU8Ln-nDurCNqQ3-HPD5PRAtEAOMwzS94gxz0hxkOIWZhpuL2_ZE72I-sBZfN6565d3rdaIV_DD96WF8DxaGk6M8FGfJ27VhxkE/s220/4516604.png" alt="User Profile Picture">
-      <div>
-        <p class="rating-author">Master Oppa</p>
-        <p class="rating-date">${dateInput}</p>
+  <div class="container">
+    ${informationInput}
+  </div>
+  
+  <h3><i class="fa-solid fa-star-half-stroke fa-beat"></i> User's Critic</h3>
+  
+  <div class="card-container">
+    <div class="card-review">
+      <div class="review-header">
+        <img alt="User Profile Picture" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibAH7Wq9Zvnk3Xtu3B-9YGcQRDAw52hnem1YB4v0HboiSrKOqVmROBDAxpBRyJuBcvsUQ20irdkU8Ln-nDurCNqQ3-HPD5PRAtEAOMwzS94gxz0hxkOIWZhpuL2_ZE72I-sBZfN6565d3rdaIV_DD96WF8DxaGk6M8FGfJ27VhxkE/s220/4516604.png" />
+        <div>
+          <p class="rating-author">Master Oppa</p>
+          <p class="rating-date">${dateInput}</p>
+        </div>
+        <div class="rating">Rating: ${ratingInput}</div>
       </div>
-      <div class="rating">Rating: ${ratingInput}</div>
+      <div class="review-body">
+        <blockquote>
+          <p1>${blockquoteInput}</p1>
+        </blockquote>
+        <p>${reviewInput}</p>
+      </div>
     </div>
-    <div class="review-content">
-      <blockquote>${blockquoteInput}</blockquote>
-      <p>${reviewInput}</p>
-      
-    <div class="screenshots">
-        <h3>Screenshots:</h3>
-        ${screenshots.map(url => `<img src="${url}" alt="Screenshot">`).join('\n        ')}
-    </div>
-     </div>
   </div>
+`;
+
+    // Include the screenshots if any URLs are entered
+    if (screenshots.length > 0) {
+        iframeCode += `<h3>Screenshots</h3>`;
+        screenshots.forEach(url => {
+            iframeCode += `<div class="screenshot">
+                <img src="${url}" alt="Screenshot" style="width:100%; max-width:600px; margin: 10px 0;"/>
+            </div>`;
+        });
+    }
+
+    // Closing the HTML body and iframe code
+    iframeCode += `
 </body>
 </html>`;
 
-            // Display the raw HTML code inside <pre> block as plain text
-            codeContainer.textContent = iframeCode;
+    // Display the raw HTML code inside <pre> block as plain text
+    codeContainer.textContent = iframeCode;
 
-            // Show the copy button
-            copyButton.style.display = "block";
-        }
+    // Show the copy button
+    copyButton.style.display = "block";
+}
+
 
         // Copy generated code to clipboard
         function copyCode() {
