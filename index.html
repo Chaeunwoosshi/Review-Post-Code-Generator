@@ -208,9 +208,9 @@ border:
 
     <label for="review">Enter Review Text:</label>
     <textarea id="review" placeholder="Enter the review text here"></textarea>
-
+<br><br>
     <!-- Add dynamic image inputs -->
-    <label for="screenshot">Enter Screenshot Image URLs:</label>
+    <label for="screenshot">Enter Screenshot Image URLs (Optional):</label>
     <div id="image-container" class="dynamic-input-container">
         <div class="dynamic-input">
             <input type="text" class="screenshot-input" placeholder="Enter the screenshot image URL here">
@@ -280,10 +280,15 @@ function generateIframe() {
 <body>
   <div class="film-details"> 
     <div class="film-thumbnail-container">
-      <div class="film-thumbnail">
-        <img alt="Film Thumbnail" src="${thumbInput}" />
+
+<div style="margin:-20px 0 -15px 0;display: flex; align-items: flex-start; clear: both;" class="separator">
+    <a href="${thumbInput}" style="text-align: center;">
+        <img src="${thumbInput}"/>
+    </a>
+</div>
+
         <div class="rating-circle">
-          <div class="rating-text">${imdbratingInput}</div>
+          <div class="rating-text">Rating: ${imdbratingInput}</div>
         </div>
       </div>
       
@@ -323,8 +328,6 @@ function generateIframe() {
   <div class="container">
     ${informationInput}
   </div>
-
- <hr style="border: 1px solid grey; opacity: 0.1; margin:20px 0;">
   
   <h3><i class="fa-solid fa-star-half-stroke fa-beat"></i> User's Critic</h3>
   
